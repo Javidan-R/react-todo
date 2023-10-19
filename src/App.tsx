@@ -4,7 +4,7 @@ import { CreateTodo, TodoList, FilterButtons, ClearCompletedButton, useDarkMode 
 
 import ShapeLight from './assets/ShapeLight.svg'
 import ShapeDark from './assets/ShapeDark.svg'
-import { AppBackground ,Container ,Header, ModeButton, SectionContainer , ItemsLeft } from './styles';
+import { AppBackground, Container, Header, ModeButton, SectionContainer, ItemsLeft, ControlBar } from './styles';
 
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
     <AppBackground darkMode={darkMode} >
       <Container>
         <Header>
-          <h1 style={{color:'#fff' ,fontFamily:'Josefin Sans', fontSize:'40px'}}>TODO</h1>
+          <h1 style={{ color: '#fff', fontFamily: 'Josefin Sans', fontSize: '40px' }}>TODO</h1>
           <ModeButton darkMode={darkMode} onClick={toggleDarkMode}>
             <img src={darkMode ? ShapeDark : ShapeLight} alt="" />
           </ModeButton>
@@ -63,11 +63,11 @@ function App() {
           <CreateTodo createOrEdit={createTodo} />
         </SectionContainer>
         <TodoList data={filteredTodos} deleteTodo={deleteTodo} toggleComplete={toggleComplete} />
-        <div style={{display:'flex' , justifyContent:'space-between' ,width:'536px'}}>
-        <ItemsLeft darkMode={true} >{`${activeItemsCount} items left`}</ItemsLeft>
+        <ControlBar>
+          <ItemsLeft darkMode={darkMode} >{`${activeItemsCount} items left`}</ItemsLeft>
           <FilterButtons setFilter={setFilter} />
           <ClearCompletedButton clearCompleted={clearCompleted} />
-        </div>
+        </ControlBar>
 
       </Container>
     </AppBackground>

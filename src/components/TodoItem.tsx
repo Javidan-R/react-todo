@@ -4,7 +4,7 @@ import { Todo } from '../models';
 import CompIcon from '../assets/CompIcon.svg';
 import Oval from '../assets/Oval.svg';
 import Delete from '../assets/Delete.svg';
-import { ListItem, TaskInfo, TaskTitle } from '../styles';
+import { ListItem, TaskInfo, TaskTitle ,CompleteBtn ,DeleteBtn } from '../styles';
 import { useDarkMode } from './DarkModeContext';
 
 interface TodoItemProps extends Todo {
@@ -16,19 +16,18 @@ export const TodoItem: React.FC<TodoItemProps> = ({ id, title, completed, delete
   const { darkMode } = useDarkMode();
 
   return (
-    <ListItem darkMode={darkMode} completed={completed} >
-      <TaskInfo>
-        <button onClick={toggleComplete} style={{ background: 'none', border: 'none', padding: 0 }}>
-          {completed ? <img src={CompIcon} alt="" /> : <img src={Oval} alt="" />}
-        </button>
+    <ListItem darkMode={darkMode} completed={completed}>
+      <TaskInfo completed={completed} darkMode={darkMode} onClick={toggleComplete}>
+        <CompleteBtn >
+          {completed ? <img src={CompIcon} alt="" /> : <img src={Oval} alt="" style={{ border: '2px solid #000', borderRadius: '50%', width: '20px', height: '20px' }} />}
+        </CompleteBtn>
         <TaskTitle completed={completed} darkMode={darkMode}>
           {title}
         </TaskTitle>
       </TaskInfo>
-      <button onClick={() => deleteTodo(id)} style={{ background: 'none', border: 'none', padding: 0, marginRight: '20px' }}>
+      <DeleteBtn onClick={() => deleteTodo(id)}>
         <img src={Delete} alt="" />
-      </button>
+      </DeleteBtn>
     </ListItem>
   );
 };
-
