@@ -6,6 +6,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "baseUrl": "src",
+    
     "paths": {
       "*": ["types/*"]
     },
@@ -24,6 +25,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts" // Əlavə edilmiş bölmə
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -56,8 +56,9 @@ function App() {
         <Header>
           <h1 style={{ color: '#fff', fontFamily: 'Josefin Sans', fontSize: '40px' }}>TODO</h1>
           <ModeButton darkMode={darkMode} onClick={toggleDarkMode}>
-            <img src={darkMode ? ShapeDark : ShapeLight} alt="" />
-          </ModeButton>
+  {darkMode ? <ShapeDark /> : <ShapeLight />}
+</ModeButton>
+
         </Header>
         <SectionContainer>
           <CreateTodo createOrEdit={createTodo} />

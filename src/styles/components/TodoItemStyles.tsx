@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import defaultImage from '../../assets/defaultImage.png';
-import darkImage from '../../assets/darkImage.png';
+import styled, { css } from "styled-components";
+import defaultImage from "../../assets/defaultImage.png";
+import darkImage from "../../assets/darkImage.png";
 
 const rem = (pxValue: number) => `${pxValue / 16}rem`;
 export interface AppBackgroundProps {
@@ -11,6 +11,7 @@ export interface ListItemProps {
   darkMode: boolean;
   completed: boolean;
 }
+// eslint-disable-next-line react-refresh/only-export-components
 export const baseButtonStyles = css`
   border: none;
   padding: ${rem(8)} ${rem(15)};
@@ -22,11 +23,12 @@ export const baseButtonStyles = css`
 export const AppBackground = styled.div<AppBackgroundProps>`
   position: relative;
   opacity: 0.9;
-  color: ${({ darkMode }) => (darkMode ? 'white' : 'black')};
+  color: ${({ darkMode }) => (darkMode ? "white" : "black")};
   width: 100%;
   height: 300px;
   background: ${({ darkMode }) =>
-    darkMode ? `url(${darkImage})` : `url(${defaultImage})`} center/cover no-repeat;
+      darkMode ? `url(${darkImage})` : `url(${defaultImage})`}
+    center/cover no-repeat;
 
   display: flex;
   justify-content: center;
@@ -37,13 +39,13 @@ export const AppBackground = styled.div<AppBackgroundProps>`
   right: 0;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(to right, #55DDFF, #C058F3);
+    background: linear-gradient(to right, #55ddff, #c058f3);
     opacity: 0.5;
     transition: opacity 0.3s;
     pointer-events: none;
@@ -103,16 +105,14 @@ export const SectionContainer = styled.div`
   margin: ${rem(12)} 0;
 
   @media screen and (max-width: 560px) {
-   width: 80%;
-   margin: 0 auto;
-
+    width: 90%;
+    margin: 0 auto;
   }
-  
+
   @media screen and (max-width: 370px) {
-    width: 80%;
-    display: flex;
-    margin: auto;
-    justify-content: center;  }
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
 
 export const ControlBar = styled.div`
@@ -128,19 +128,19 @@ export const ControlBar = styled.div`
     flex-direction:column;
     flex-shrink:0;
     flex-wrap:wrap;
-    gap:10px;
 &>div{
-margin:10px;
+margin:10px auto;
     width: 90%;
-
-
 }
-
+&> button{
+width: 50%;
+  margin: 0 auto;
+}
   }
 `;
 
 export const ItemsLeft = styled.div<{ darkMode: boolean }>`
-  color: ${({ darkMode }) => (darkMode ? 'gray' : 'black')};
+  color: ${({ darkMode }) => (darkMode ? "gray" : "black")};
   margin: auto 0;
   font-size: ${rem(18)};
 
@@ -155,7 +155,6 @@ export const List = styled.ul`
   margin: 0;
 
   @media screen and (max-width: 570px) {
-
     margin: 0 auto;
     width: 90%;
   }
@@ -172,18 +171,18 @@ export const ListItem = styled.li<ListItemProps>`
   border-radius: 5px;
   margin: ${rem(13)} auto;
   align-items: center;
-  background: ${({ darkMode }) => (darkMode ? '#25273d' : 'white')};
+  letter-spacing: 2px;
+	fontFamily: Arial;
+  background: ${({ darkMode }) => (darkMode ? "#25273d" : "white")};
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
 
   @media screen and (max-width: 570px) {
-
     margin: 16px auto;
     width: 90%;
   }
 
   @media screen and (max-width: 370px) {
-
     margin: 16px auto;
     width: 90%;
   }
@@ -192,15 +191,15 @@ export const ListItem = styled.li<ListItemProps>`
 export const TaskInfo = styled.div<ListItemProps>`
   ${({ completed, darkMode }) => css`
     -webkit-background-clip: text;
-    text-decoration: ${completed ? 'line-through' : 'none'};
-    color: ${completed && darkMode ? 'gray' : darkMode ? '#fff' : '#494c6b'};
+    text-decoration: ${completed ? "line-through" : "none"};
+    color: ${completed && darkMode ? "gray" : darkMode ? "#fff" : "#494c6b"};
     width: 90%;
     display: flex;
     margin-left: ${rem(20)};
     position: relative;
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -227,24 +226,21 @@ export const DeleteBtn = styled.button`
   padding: 0;
   margin-right: 20px;
   cursor: pointer;
-
- 
 `;
 
 export const TaskTitle = styled.h3<ListItemProps>`
   ${({ completed, darkMode }) => css`
     margin-left: 20px;
-    color: ${darkMode ? '#fff' : '#494c6b'};
+    color: ${darkMode ? "#fff" : "#494c6b"};
     text-align: left;
-    font-family: ${completed ? 'italic' : 'Josefin Sans'};
+    font-family: ${completed ? "italic" : "Josefin Sans"};
     font-size: 20px;
-
   `}
 `;
 export const TaskDescription = styled.p<{ completed: boolean }>`
   ${({ completed }) => css`
     display: inline;
-    text-decoration: ${completed ? 'line-through' : 'none'};
+    text-decoration: ${completed ? "line-through" : "none"};
   `}
 `;
 
@@ -254,35 +250,41 @@ export const CompletionStatus = styled.p`
 
 export const StyledButton = styled.button<{ darkMode: boolean }>`
   ${baseButtonStyles}
-  background-color: ${({ darkMode }) => (darkMode ? '#333' : '#f4f4f4')};
+  background: ${({ darkMode }) =>
+    darkMode
+      ? 'linear-gradient(to right, #333, #555)'
+      :  'linear-gradient(to right, #fff, #6C4F94)'};
   color: ${({ darkMode }) => (darkMode ? 'white' : '#333')};
+  font-weith: 600;
 
   &:hover {
-    background-color: ${({ darkMode }) => (darkMode ? '#555' : '#ddd')};
+    background: ${({ darkMode }) =>
+      darkMode
+        ? 'linear-gradient(to right, #ff758c, #ff7eb3);'
+        : 'linear-gradient(to right, #6C4F94, #fff)'};
   }
 `;
-export const StyledForm = styled.form<{ darkMode: boolean ,hasError: boolean}>`
+
+export const StyledForm = styled.form<{ darkMode: boolean; hasError: boolean }>`
   width: ${rem(534)};
   height: ${rem(64)};
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: ${rem(5)};
-  border: 2px solid ${({ hasError }) => (hasError ? 'red' : 'initial')};
+  border: 2px solid ${({ hasError }) => (hasError ? "red" : "initial")};
 
-  background-color: ${({ darkMode }) => (darkMode ? '#25273d' : 'white')};
+  background-color: ${({ darkMode }) => (darkMode ? "#25273d" : "white")};
   border-radius: ${rem(5)};
-  box-shadow: ${rem(0)} ${rem(35)} ${rem(50)} ${rem(-15)} rgba(194, 195, 214, 0.50);
+  box-shadow: ${rem(0)} ${rem(35)} ${rem(50)} ${rem(-15)}
+    rgba(194, 195, 214, 0.5);
   outline: none;
   border: ${rem(1)} solid #fff;
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   font-size: ${rem(18)};
   @media screen and (max-width: 560px) {
-    width: 350px;
+    width: 90%;
     margin: 0 auto;
-  
-
-
   }
 `;
 
@@ -291,10 +293,10 @@ export const StyledInput = styled.input<{ darkMode: boolean }>`
   background-color: transparent;
   outline: none;
   border: none;
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   font-size: ${rem(20)};
   padding: ${rem(3)} ${rem(23)};
-  color: ${({ darkMode }) => (darkMode ? '#fff' : '#25273d')};
+  color: ${({ darkMode }) => (darkMode ? "#fff" : "#25273d")};
   width: 85%;
   padding: ${rem(20)} 0;
 `;
