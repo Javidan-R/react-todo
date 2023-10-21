@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import type { Todo } from './models';
 import { CreateTodo, TodoList, FilterButtons, ClearCompletedButton, useDarkMode } from './components';
-
-import ShapeLight from './assets/ShapeLight.svg'
-import ShapeDark from './assets/ShapeDark.svg'
+import ShapeLightComponent from './assets/ShapeLight.svg';
+import ShapeDarkComponent from './assets/ShapeDark.svg';
 import { AppBackground, Container, Header, ModeButton, SectionContainer, ItemsLeft, ControlBar } from './styles';
 
 
@@ -56,7 +55,7 @@ function App() {
         <Header>
           <h1 style={{ color: '#fff', fontFamily: 'Josefin Sans', fontSize: '40px' }}>TODO</h1>
           <ModeButton darkMode={darkMode} onClick={toggleDarkMode}>
-  {darkMode ? <ShapeDark /> : <ShapeLight />}
+  <img src={darkMode ? ShapeDarkComponent : ShapeLightComponent} alt="" />
 </ModeButton>
 
         </Header>

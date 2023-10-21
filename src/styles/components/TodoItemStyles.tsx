@@ -52,7 +52,7 @@ export const AppBackground = styled.div<AppBackgroundProps>`
   }
 
   @media screen and (max-width: 560px) {
-    height: 50vh;
+    height: 100vh;
     &::before {
       opacity: 0.7;
     }
